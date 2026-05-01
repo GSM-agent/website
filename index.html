@@ -3,572 +3,353 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GSM.ai — The AI Global Supply Manager</title>
+  <title>GSM.ai — Sourcing Intelligence. Bidding Clarity.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy:    #0F172A;
-      --blue:    #2563EB;
-      --blue-l:  #3B82F6;
-      --blue-pale:#EFF6FF;
-      --white:   #FFFFFF;
-      --gray-50: #F8FAFC;
-      --gray-200:#E2E8F0;
-      --gray-500:#64748B;
-      --gray-700:#334155;
-      --red:     #EF4444;
-      --green:   #10B981;
-      --amber:   #F59E0B;
+      --black: #0A0A0A;
+      --white: #FFFFFF;
+      --gray-100: #F5F5F7;
+      --gray-400: #9A9A9A;
+      --gray-600: #4A4A4A;
+      --blue: #0071E3;
     }
-    
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--navy); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--black); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
     /* NAV */
-    nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-200); z-index: 100; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
-    .logo { font-size: 22px; font-weight: 800; color: var(--navy); letter-spacing: -0.5px; }
+    nav {
+      position: fixed; top: 0; width: 100%;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      z-index: 100;
+      padding: 0 48px;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; color: var(--black); text-decoration: none; }
     .logo span { color: var(--blue); }
-    nav ul { list-style: none; display: flex; gap: 28px; align-items: center; }
-    nav ul a { text-decoration: none; color: var(--gray-700); font-size: 14px; font-weight: 500; transition: color .2s; }
-    nav ul a:hover { color: var(--blue); }
-    .nav-cta { background: var(--blue); color: var(--white) !important; padding: 8px 20px; border-radius: 8px; font-weight: 600 !important; }
-    .nav-cta:hover { background: #1D4ED8 !important; }
+    .nav-cta {
+      background: var(--black); color: var(--white);
+      padding: 8px 18px; border-radius: 980px;
+      font-size: 13px; font-weight: 500;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: 0.8; }
 
     /* HERO */
-    .hero { padding: 140px 40px 100px; text-align: center; max-width: 960px; margin: 0 auto; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-pale); color: var(--blue); font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 100px; margin-bottom: 32px; border: 1px solid #BFDBFE; }
-    .hero-badge .dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-    h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 900; line-height: 1.07; letter-spacing: -2.5px; color: var(--navy); margin-bottom: 24px; }
-    h1 .highlight { color: var(--blue); }
-    .hero-sub { font-size: clamp(16px, 2vw, 20px); color: var(--gray-500); max-width: 660px; margin: 0 auto 32px; line-height: 1.75; }
-    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary { background: var(--blue); color: white; padding: 14px 32px; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; transition: background .2s, transform .2s; display: inline-block; }
-    .btn-primary:hover { background: #1D4ED8; transform: translateY(-1px); }
-    .btn-secondary { background: white; color: var(--navy); padding: 14px 32px; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--gray-200); transition: border-color .2s, transform .2s; display: inline-block; }
-    .btn-secondary:hover { border-color: var(--blue); transform: translateY(-1px); }
+    .hero {
+      padding: 160px 24px 120px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-label {
+      font-size: 13px; font-weight: 500; color: var(--blue);
+      letter-spacing: 0.02em; margin-bottom: 20px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    h1 {
+      font-size: clamp(44px, 6.5vw, 80px);
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: -3px;
+      color: var(--black);
+      margin-bottom: 28px;
+    }
+    .hero-sub {
+      font-size: clamp(17px, 2vw, 21px);
+      color: var(--gray-600);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.65;
+      font-weight: 400;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--blue); color: var(--white);
+      padding: 14px 32px; border-radius: 980px;
+      font-size: 17px; font-weight: 500;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .hero-cta:hover { opacity: 0.85; }
 
-    /* STAT STRIP */
-    .stat-strip { background: var(--navy); padding: 44px 40px; display: flex; justify-content: center; gap: 72px; flex-wrap: wrap; }
-    .stat { text-align: center; }
-    .stat-number { font-size: 34px; font-weight: 800; color: var(--blue-l); letter-spacing: -1px; }
-    .stat-label { font-size: 13px; color: #94A3B8; margin-top: 6px; max-width: 180px; }
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid rgba(0,0,0,0.08); margin: 0 48px; }
 
-    /* SECTIONS */
-    section { padding: 100px 40px; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-tag { font-size: 13px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-    .section-title { font-size: clamp(28px, 4vw, 48px); font-weight: 800; letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px; }
-    .section-sub { font-size: 18px; color: var(--gray-500); max-width: 600px; line-height: 1.75; }
+    /* SECTION */
+    section { padding: 100px 48px; }
+    .section-inner { max-width: 960px; margin: 0 auto; }
+    .section-label {
+      font-size: 13px; font-weight: 600; color: var(--blue);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--black);
+    }
+    .section-sub {
+      font-size: 18px;
+      color: var(--gray-600);
+      max-width: 560px;
+      line-height: 1.7;
+    }
 
-    /* PROBLEM */
-    .problem { background: var(--gray-50); }
-    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 56px; }
-    .problem-card { background: white; border: 1px solid var(--gray-200); border-radius: 16px; padding: 32px; transition: box-shadow .2s, transform .2s; }
-    .problem-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); transform: translateY(-2px); }
-    .problem-icon { width: 48px; height: 48px; background: var(--blue-pale); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px; }
-    .cost { font-size: 26px; font-weight: 800; color: var(--red); margin-bottom: 8px; letter-spacing: -1px; }
-    .problem-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
-    .problem-card p { font-size: 14px; color: var(--gray-500); line-height: 1.65; }
+    /* TWO CAPABILITIES */
+    .capabilities { background: var(--gray-100); }
+    .cap-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 64px;
+      background: rgba(0,0,0,0.08);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .cap-card {
+      background: var(--white);
+      padding: 48px;
+    }
+    .cap-card:first-child { border-radius: 20px 0 0 20px; }
+    .cap-card:last-child { border-radius: 0 20px 20px 0; }
+    .cap-number {
+      font-size: 12px; font-weight: 700;
+      color: var(--gray-400);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .cap-title {
+      font-size: 26px; font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .cap-desc {
+      font-size: 15px; color: var(--gray-600);
+      line-height: 1.65; margin-bottom: 36px;
+    }
+    .cap-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .cap-list li {
+      font-size: 15px; color: var(--gray-600);
+      padding-left: 20px; position: relative;
+      line-height: 1.5;
+    }
+    .cap-list li::before {
+      content: '';
+      position: absolute; left: 0; top: 9px;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
 
-    /* PRODUCT MODULES */
-    .modules { background: white; }
-    .modules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 56px; }
-    .module-card { border-radius: 20px; padding: 40px; border: 1.5px solid var(--gray-200); transition: box-shadow .2s; }
-    .module-card:hover { box-shadow: 0 8px 40px rgba(0,0,0,.08); }
-    .module-card.sourcing { border-color: var(--blue); background: var(--blue-pale); }
-    .module-card.bidding { background: var(--navy); border-color: var(--navy); }
-    .module-num { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-    .module-card.sourcing .module-num { color: var(--blue); }
-    .module-card.bidding .module-num { color: #60A5FA; }
-    .module-title { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 14px; }
-    .module-card.sourcing .module-title { color: var(--navy); }
-    .module-card.bidding .module-title { color: white; }
-    .module-desc { font-size: 15px; line-height: 1.7; margin-bottom: 24px; }
-    .module-card.sourcing .module-desc { color: var(--gray-700); }
-    .module-card.bidding .module-desc { color: #94A3B8; }
-    .module-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .module-features li { font-size: 14px; font-weight: 500; padding-left: 22px; position: relative; }
-    .module-features li::before { content: '✓'; position: absolute; left: 0; font-weight: 700; }
-    .module-card.sourcing .module-features li { color: var(--navy); }
-    .module-card.sourcing .module-features li::before { color: var(--blue); }
-    .module-card.bidding .module-features li { color: #CBD5E1; }
-    .module-card.bidding .module-features li::before { color: #60A5FA; }
+    /* HOW IT WORKS */
+    .how { background: var(--white); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      margin-top: 72px;
+    }
+    .step-num {
+      font-size: 13px; font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+    .step-title {
+      font-size: 20px; font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 12px;
+    }
+    .step-desc { font-size: 15px; color: var(--gray-600); line-height: 1.65; }
 
-    /* REPORT TIERS */
-    .reports { background: var(--gray-50); }
-    .report-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
-    .report-card { background: white; border-radius: 16px; border: 1.5px solid var(--gray-200); padding: 32px; }
-    .report-card.premium { border-color: var(--amber); background: #FFFBEB; }
-    .report-badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 100px; margin-bottom: 16px; }
-    .report-card:not(.premium) .report-badge { background: var(--gray-200); color: var(--gray-700); }
-    .report-card.premium .report-badge { background: var(--amber); color: white; }
-    .report-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 10px; }
-    .report-card p { font-size: 14px; color: var(--gray-500); margin-bottom: 20px; line-height: 1.65; }
-    .report-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .report-features li { font-size: 13px; color: var(--gray-700); padding-left: 20px; position: relative; }
-    .report-features li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
-
-    /* VENDOR NETWORK */
-    .vendor-network { background: var(--gray-50); }
-    .network-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
-    .compare-col { background: white; border-radius: 16px; padding: 32px; border: 1.5px solid var(--gray-200); }
-    .compare-col.good { border-color: var(--green); background: #F0FDF4; }
-    .compare-label { font-size: 14px; font-weight: 700; margin-bottom: 20px; }
-    .compare-label.bad { color: var(--red); }
-    .compare-label.good { color: var(--green); }
-    .compare-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .compare-col ul li { font-size: 14px; color: var(--gray-700); padding-left: 20px; position: relative; }
-    .compare-col ul li::before { content: '—'; position: absolute; left: 0; color: var(--red); }
-    .compare-col.good ul li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
-    .flywheel { display: flex; align-items: center; justify-content: center; gap: 0; margin: 56px 0; flex-wrap: wrap; }
-    .flywheel-step { text-align: center; padding: 20px 24px; flex: 1; min-width: 180px; }
-    .flywheel-icon { width: 52px; height: 52px; background: var(--blue-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; margin: 0 auto 12px; border: 2px solid #BFDBFE; }
-    .flywheel-step h4 { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-    .flywheel-step p { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
-    .flywheel-arrow { font-size: 20px; color: var(--blue); flex-shrink: 0; padding: 0 4px; }
-    .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .tier-card { background: white; border-radius: 16px; padding: 32px; border: 1.5px solid var(--gray-200); transition: box-shadow .2s; }
-    .tier-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); }
-    .tier-card.featured { border-color: var(--blue); background: var(--blue-pale); }
-    .tier-badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 100px; margin-bottom: 16px; }
-    .tier-badge.listed { background: var(--gray-200); color: var(--gray-700); }
-    .tier-badge.verified { background: #D1FAE5; color: #065F46; }
-    .tier-badge.top { background: var(--amber); color: white; }
-    .tier-card h4 { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
-    .tier-card p { font-size: 14px; color: var(--gray-500); line-height: 1.65; margin-bottom: 16px; }
-    .tier-req { font-size: 12px; font-weight: 600; color: var(--blue); background: var(--blue-pale); padding: 8px 12px; border-radius: 8px; line-height: 1.5; }
-    .tier-card.featured .tier-req { background: rgba(37,99,235,.12); }
-
-    /* BEACHHEAD */
-    .beachhead { background: var(--navy); }
-    .beachhead .section-title { color: white; }
-    .beachhead .section-sub { color: #94A3B8; }
-    .uc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 56px; }
-    .uc-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 16px; padding: 28px; transition: background .2s; }
-    .uc-card:hover { background: rgba(255,255,255,.1); }
-    .uc-card.featured { border-color: var(--blue-l); background: rgba(37,99,235,.15); }
-    .uc-icon { font-size: 32px; margin-bottom: 16px; }
-    .uc-card h3 { font-size: 16px; font-weight: 700; color: white; margin-bottom: 8px; }
-    .uc-card p { font-size: 14px; color: #94A3B8; line-height: 1.65; }
-    .uc-tag { display: inline-block; margin-top: 12px; font-size: 12px; font-weight: 600; color: var(--blue-l); background: rgba(59,130,246,.15); padding: 4px 10px; border-radius: 6px; }
-    .uc-tag.hot { background: rgba(245,158,11,.2); color: var(--amber); }
-
-    /* BUSINESS MODEL */
-    .biz { background: white; }
-    .biz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
-    .biz-card { border-radius: 16px; padding: 32px; border: 1.5px solid var(--gray-200); }
-    .biz-card.highlight { background: var(--navy); border-color: var(--navy); }
-    .biz-num { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--blue); margin-bottom: 12px; }
-    .biz-card.highlight .biz-num { color: #60A5FA; }
-    .biz-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-    .biz-card.highlight .biz-title { color: white; }
-    .biz-price { font-size: 28px; font-weight: 900; color: var(--blue); letter-spacing: -1px; margin-bottom: 8px; }
-    .biz-card.highlight .biz-price { color: var(--blue-l); }
-    .biz-desc { font-size: 13px; color: var(--gray-500); line-height: 1.65; margin-bottom: 20px; }
-    .biz-card.highlight .biz-desc { color: #94A3B8; }
-    .biz-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .biz-features li { font-size: 13px; padding-left: 20px; position: relative; }
-    .biz-features li::before { content: '✓'; position: absolute; left: 0; font-weight: 700; color: var(--blue); }
-    .biz-card.highlight .biz-features li { color: #CBD5E1; }
-    .biz-card.highlight .biz-features li::before { color: #60A5FA; }
-
-    /* WAITLIST */
-    .waitlist { background: var(--gray-50); text-align: center; }
-    .waitlist .section-title { max-width: 640px; margin: 0 auto 16px; }
-    .waitlist .section-sub { margin: 0 auto 48px; }
-    .waitlist-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto 16px; flex-wrap: wrap; justify-content: center; }
-    .waitlist-form input { flex: 1; min-width: 240px; padding: 14px 20px; border: 1.5px solid var(--gray-200); border-radius: 10px; font-size: 15px; font-family: inherit; outline: none; background: white; transition: border-color .2s; }
-    .waitlist-form input:focus { border-color: var(--blue); }
-    .waitlist-form button { background: var(--blue); color: white; padding: 14px 28px; border-radius: 10px; border: none; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; transition: background .2s; white-space: nowrap; }
-    .waitlist-form button:hover { background: #1D4ED8; }
-    .form-note { font-size: 13px; color: var(--gray-500); }
-    .waitlist-tabs { display: flex; gap: 12px; justify-content: center; margin-bottom: 32px; }
-    .wtab { padding: 8px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: 1.5px solid var(--gray-200); background: white; color: var(--gray-700); transition: all .2s; }
-    .wtab.active { background: var(--blue); color: white; border-color: var(--blue); }
+    /* CTA SECTION */
+    .cta-section {
+      background: var(--black);
+      text-align: center;
+      padding: 120px 48px;
+    }
+    .cta-section h2 { color: var(--white); margin-bottom: 16px; }
+    .cta-section p { color: var(--gray-400); font-size: 18px; margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+    .cta-form { display: flex; gap: 12px; max-width: 440px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .cta-form input {
+      flex: 1; min-width: 220px;
+      padding: 14px 20px;
+      border-radius: 980px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .cta-form input::placeholder { color: rgba(255,255,255,0.35); }
+    .cta-form input:focus { border-color: rgba(255,255,255,0.4); }
+    .cta-form button {
+      background: var(--white); color: var(--black);
+      padding: 14px 28px; border-radius: 980px;
+      border: none; font-size: 15px; font-weight: 600;
+      cursor: pointer; font-family: inherit;
+      transition: opacity .2s; white-space: nowrap;
+    }
+    .cta-form button:hover { opacity: 0.85; }
+    .cta-note { font-size: 13px; color: rgba(255,255,255,0.3); margin-top: 16px; }
 
     /* FOOTER */
-    footer { background: var(--navy); color: #64748B; text-align: center; padding: 40px; font-size: 14px; }
-    footer .logo { color: white; display: block; margin-bottom: 8px; }
-
-    @media (max-width: 768px) {
-      nav ul { display: none; }
-      section { padding: 70px 24px; }
-      nav { padding: 0 24px; }
-      .hero { padding: 120px 24px 80px; }
-      .modules-grid, .report-grid, .biz-grid, .network-compare, .tier-grid { grid-template-columns: 1fr; }
-      .flywheel { flex-direction: column; gap: 8px; }
-      .flywheel-arrow { transform: rotate(90deg); }
-      .stat-strip { gap: 40px; }
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 32px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
     }
-    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    footer .logo { color: var(--white); font-size: 15px; }
+    footer p { font-size: 13px; color: rgba(255,255,255,0.3); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      section { padding: 80px 24px; }
+      .divider { margin: 0 24px; }
+      .cap-grid { grid-template-columns: 1fr; }
+      .cap-card:first-child { border-radius: 20px 20px 0 0; }
+      .cap-card:last-child { border-radius: 0 0 20px 20px; }
+      .steps { grid-template-columns: 1fr; gap: 40px; }
+      footer { flex-direction: column; text-align: center; }
+    }
+
+    /* FADE IN */
+    .fade { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .fade.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
   <nav>
-    <div class="logo">GSM<span>.ai</span></div>
-    <ul>
-      <li><a href="#product">Product</a></li>
-      <li><a href="#network">Vendor Network</a></li>
-      <li><a href="#beachhead">Industries</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#waitlist" class="nav-cta">Get Early Access</a></li>
-    </ul>
+    <a href="#" class="logo">GSM<span>.ai</span></a>
+    <a href="#access" class="nav-cta">Request Access</a>
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <h1>AI agent as a<br /><span class="highlight">global supply manager</span></h1>
+  <div class="hero">
+    <div class="hero-label">For Global Supply Managers</div>
+    <h1>Sourcing intelligence.<br />Bidding clarity.</h1>
     <p class="hero-sub">
-      GSM.ai replaces the manual work of global supply sourcing and bidding — giving any manufacturer in the world the ability to build automated production lines faster, cheaper, and fair.
+      GSM.ai handles the research, scope alignment, and analysis — so your team spends less time searching and more time deciding.
     </p>
-    <div class="hero-actions">
-      <a href="#waitlist" class="btn-primary">Get Early Access</a>
-      <a href="#product" class="btn-secondary">See How It Works</a>
-    </div>
-  </section>
-
-  <!-- STAT STRIP -->
-  <div class="stat-strip">
-    <div class="stat">
-      <div class="stat-number">$200K+</div>
-      <div class="stat-label">avg. annual cost of one global supply manager role</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">50–200</div>
-      <div class="stat-label">global supply managers at a typical Fortune 500 manufacturer</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">300+</div>
-      <div class="stat-label">supplier bids evaluated per equipment sourcing project</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">10×</div>
-      <div class="stat-label">faster sourcing with GSM.ai</div>
-    </div>
+    <a href="#access" class="hero-cta">Get Early Access</a>
   </div>
 
-  <!-- PRODUCT MODULES -->
-  <section class="modules" id="product">
+  <hr class="divider" />
+
+  <!-- TWO CAPABILITIES -->
+  <section class="capabilities">
     <div class="section-inner">
-      <div class="fade-in">
-        <div class="section-tag">The Product</div>
-        <h2 class="section-title">Two AI modules. One complete<br />global supply workflow.</h2>
-        <p class="section-sub">GSM.ai handles the full scope of what a global supply manager does — from initial market research all the way through to awarded bid.</p>
+      <div class="fade">
+        <div class="section-label">What it does</div>
+        <h2>Two jobs. Done right.</h2>
+        <p class="section-sub">GSM.ai works across the two most time-consuming parts of a supply manager's role.</p>
       </div>
-      <div class="modules-grid">
-        <div class="module-card sourcing fade-in">
-          <div class="module-num">Module 01</div>
-          <div class="module-title">Sourcing Agent</div>
-          <p class="module-desc">AI-powered market research, supplier discovery, and risk analysis — replacing weeks of manual research with a structured report delivered in hours.</p>
-          <ul class="module-features">
-            <li>Global market research & landscape mapping</li>
-            <li>Supplier identification & capability assessment</li>
+      <div class="cap-grid fade">
+        <div class="cap-card">
+          <div class="cap-number">01 — Sourcing</div>
+          <div class="cap-title">Find the right vendor,<br />before you talk to them.</div>
+          <p class="cap-desc">Skip weeks of cold outreach. Get a structured intelligence report on every candidate before the first call.</p>
+          <ul class="cap-list">
+            <li>Industry & market landscape research</li>
+            <li>Supplier discovery & shortlisting</li>
+            <li>Capability & production capacity assessment</li>
             <li>Financial health & stability analysis</li>
-            <li>Geopolitical & supply chain risk scoring</li>
-            <li>US market experience verification</li>
-            <li>Capacity & production capability report</li>
+            <li>Past project experience & references</li>
+            <li>Geopolitical & tariff risk scoring</li>
           </ul>
         </div>
-        <div class="module-card bidding fade-in">
-          <div class="module-num">Module 02</div>
-          <div class="module-title">Bidding Agent</div>
-          <p class="module-desc">End-to-end RFQ management — from scope document generation to vendor Q&A to structured bid comparison — so you always get the best price with full transparency.</p>
-          <ul class="module-features">
-            <li>Automated RFQ & scope document generation</li>
-            <li>Vendor onboarding & scope clarification</li>
-            <li>Bid collection & completeness review</li>
-            <li>Structured bid comparison & analysis</li>
-            <li>Recommendation report with risk-adjusted ranking</li>
-            <li>Award notification & contract initiation</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VENDOR NETWORK -->
-  <section class="vendor-network" id="network">
-    <div class="section-inner">
-      <div class="fade-in">
-        <div class="section-tag">Qualified Vendor Network</div>
-        <h2 class="section-title">The right vendor.<br />Not the biggest one.</h2>
-        <p class="section-sub">Company size doesn't mean fit. GSM.ai matches vendors to your specific project requirements — capacity, certifications, geography, lead time, and experience. A focused specialist who's done this exact job beats a global giant who hasn't.</p>
-      </div>
-
-      <div class="network-compare fade-in">
-        <div class="compare-col">
-          <div class="compare-label bad">Alibaba / Traditional Platforms</div>
-          <ul>
-            <li>500+ unvetted vendors per search</li>
-            <li>Bigger companies dominate results regardless of fit</li>
-            <li>Anyone can claim "world-class quality"</li>
-            <li>Buyer must do their own due diligence</li>
-            <li>Buyers lose weeks sorting signal from noise</li>
-          </ul>
-        </div>
-        <div class="compare-col good">
-          <div class="compare-label good">GSM.ai Qualified Vendor Network</div>
-          <ul>
-            <li>5–10 vendors matched to your specific requirements</li>
-            <li>Fit ranked by capability, certifications, and project experience — not company size</li>
-            <li>AI-verified capacity, track record, and delivery history</li>
-            <li>Vendors lose tier status for underperformance</li>
-            <li>Buyers make confident decisions in days, not months</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="flywheel fade-in">
-        <div class="flywheel-step">
-          <div class="flywheel-icon">📋</div>
-          <h4>Vendors submit data</h4>
-          <p>Certifications, capacity, references, financial health</p>
-        </div>
-        <div class="flywheel-arrow">→</div>
-        <div class="flywheel-step">
-          <div class="flywheel-icon">🤖</div>
-          <h4>AI scores & validates</h4>
-          <p>Vendor earns a qualification tier based on evidence</p>
-        </div>
-        <div class="flywheel-arrow">→</div>
-        <div class="flywheel-step">
-          <div class="flywheel-icon">📡</div>
-          <h4>Higher tiers = more exposure</h4>
-          <p>Qualified vendors surface in AI recommendations to buyers</p>
-        </div>
-        <div class="flywheel-arrow">→</div>
-        <div class="flywheel-step">
-          <div class="flywheel-icon">💼</div>
-          <h4>Deals close → vendors invest more</h4>
-          <p>ROI drives vendors to maintain and improve their profiles</p>
-        </div>
-      </div>
-
-      <div style="margin-top: 16px;">
-        <div style="text-align:center; margin-bottom: 40px;">
-          <h3 style="font-size: clamp(20px, 3vw, 28px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px;">Vendor Qualification Tiers</h3>
-          <p style="font-size: 16px; color: var(--gray-500);">Vendors move up by proving more. Every tier unlocks greater buyer exposure.</p>
-        </div>
-        <div class="tier-grid">
-          <div class="tier-card fade-in">
-            <span class="tier-badge listed">Listed</span>
-            <h4>Basic Profile</h4>
-            <p>Company overview and product range on record. Visible in general search but not included in AI-curated recommendations.</p>
-            <div class="tier-req">Requires: Company registration · Product catalog · Contact info</div>
-          </div>
-          <div class="tier-card fade-in">
-            <span class="tier-badge verified">Verified Supplier</span>
-            <h4>AI-Screened</h4>
-            <p>Capabilities, certifications, and production capacity validated by the AI engine. Included in sourcing report shortlists sent to buyers.</p>
-            <div class="tier-req">Requires: Certifications · Production capacity · Financial health docs · 1+ reference project</div>
-          </div>
-          <div class="tier-card featured fade-in">
-            <span class="tier-badge top">Top Performer</span>
-            <h4>Track Record Proven</h4>
-            <p>Verified Supplier with demonstrated delivery history, high buyer ratings, and fast response times. Priority placement in every recommendation.</p>
-            <div class="tier-req">Requires: Multiple buyer ratings · Delivery track record · Response score · US project experience</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- REPORT TIERS -->
-  <section class="reports" id="reports">
-    <div class="section-inner">
-      <div class="fade-in">
-        <div class="section-tag">Supplier Intelligence</div>
-        <h2 class="section-title">Know exactly who you're<br />dealing with before you commit.</h2>
-        <p class="section-sub">Every sourcing inquiry generates a structured vendor intelligence report. Choose standard or premium based on the stakes of your decision.</p>
-      </div>
-      <div class="report-grid fade-in">
-        <div class="report-card">
-          <span class="report-badge">Standard Report</span>
-          <h3>Core Vendor Profile</h3>
-          <p>Everything you need to build a qualified vendor shortlist — fast.</p>
-          <ul class="report-features">
-            <li>Company overview & product range</li>
-            <li>Certifications & compliance status</li>
-            <li>Production capacity summary</li>
-            <li>Geographic coverage & delivery capability</li>
-            <li>Basic risk flag summary</li>
-          </ul>
-        </div>
-        <div class="report-card premium">
-          <span class="report-badge">Premium Report</span>
-          <h3>Full Due Diligence Package</h3>
-          <p>Deep intelligence for high-stakes CAPEX decisions where you can't afford surprises.</p>
-          <ul class="report-features">
-            <li>Financial health & stability analysis (3-year)</li>
-            <li>Past project references & case studies</li>
-            <li>Production & workforce capability deep-dive</li>
-            <li>US market experience & project history</li>
-            <li>Geopolitical & tariff risk assessment</li>
-            <li>Executive leadership & ownership structure</li>
-            <li>Competitive positioning vs. peer vendors</li>
+        <div class="cap-card">
+          <div class="cap-number">02 — Bidding</div>
+          <div class="cap-title">Every vendor quotes<br />the same scope.</div>
+          <p class="cap-desc">Most bid gaps aren't price differences — they're misunderstandings. GSM.ai aligns scope before bids come in.</p>
+          <ul class="cap-list">
+            <li>Scope alignment — one clear page between you and each vendor</li>
+            <li>Standardized RFQ templates so every vendor quotes the right work</li>
+            <li>Helps vendors read your documents and respond accurately</li>
+            <li>Quotation review — cost breakdown, gaps, and missing scope</li>
+            <li>Side-by-side bid comparison with gap analysis</li>
+            <li>Final recommendation based on price, risk, and fit</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BEACHHEAD INDUSTRIES -->
-  <section class="beachhead" id="beachhead">
+  <hr class="divider" />
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
     <div class="section-inner">
-      <div class="fade-in">
-        <div class="section-tag" style="color:#60A5FA;">Industries We Serve</div>
-        <h2 class="section-title">Starting with energy.<br />Expanding to every factory.</h2>
-        <p class="section-sub">The US energy manufacturing boom is creating the most urgent and concentrated CAPEX sourcing demand in a generation. We're starting here.</p>
+      <div class="fade">
+        <div class="section-label">How it works</div>
+        <h2>Three steps to a<br />confident decision.</h2>
       </div>
-      <div class="uc-grid">
-        <div class="uc-card featured fade-in">
-          <div class="uc-icon">☀️</div>
-          <h3>Solar Panel Manufacturing</h3>
-          <p>100GW of US solar capacity targeted by 2030. IRA incentives driving a massive factory buildout. Sourcing wafer handling, cell interconnect automation, lamination, and test equipment from global OEMs is the critical bottleneck.</p>
-          <span class="uc-tag hot">🔥 Beachhead</span>
+      <div class="steps">
+        <div class="fade">
+          <div class="step-num">Step 01</div>
+          <div class="step-title">Tell the AI what you need</div>
+          <p class="step-desc">Describe the equipment, scope, standards, and requirements. GSM.ai reads your documents and understands the context — no reformatting needed.</p>
         </div>
-        <div class="uc-card featured fade-in">
-          <div class="uc-icon">🔋</div>
-          <h3>Battery & Energy Storage</h3>
-          <p>EV and grid storage demand is exploding. Cell stacking, formation cycling, electrolyte filling — every battery manufacturer needs to stand up production lines fast. We source and bid the equipment globally.</p>
-          <span class="uc-tag hot">🔥 Priority</span>
+        <div class="fade">
+          <div class="step-num">Step 02</div>
+          <div class="step-title">Get a vendor shortlist and aligned RFQ</div>
+          <p class="step-desc">Receive a curated list of qualified vendors with full intelligence reports, plus an RFQ package that ensures every vendor quotes exactly the same scope — no gaps, no assumptions.</p>
         </div>
-        <div class="uc-card fade-in">
-          <div class="uc-icon">⚡</div>
-          <h3>Grid & Power Infrastructure</h3>
-          <p>AI data centers are driving unprecedented electricity demand. Transformers, switchgear, power electronics — sourcing production lines for grid hardware is an emerging critical need with no good tooling.</p>
-          <span class="uc-tag">Expanding</span>
-        </div>
-        <div class="uc-card fade-in">
-          <div class="uc-icon">🤖</div>
-          <h3>Industrial Automation & Robotics</h3>
-          <p>Robotic welding cells, vision inspection systems, collaborative robot integrators — any manufacturer adding automation capacity needs global vendor sourcing and competitive bidding.</p>
-          <span class="uc-tag">Expanding</span>
-        </div>
-        <div class="uc-card fade-in">
-          <div class="uc-icon">💻</div>
-          <h3>Electronics Manufacturing</h3>
-          <p>SMT lines, reflow ovens, AOI systems — US reshoring of electronics assembly is accelerating. GSM.ai sources equipment globally with lead time and capacity validation.</p>
-          <span class="uc-tag">Expanding</span>
-        </div>
-        <div class="uc-card fade-in">
-          <div class="uc-icon">✈️</div>
-          <h3>Aerospace & Defense</h3>
-          <p>Precision machining centers, composite layup automation, NDT systems — AS9100 and ITAR compliant sourcing with full export control checks built in.</p>
-          <span class="uc-tag">Expanding</span>
+        <div class="fade">
+          <div class="step-num">Step 03</div>
+          <div class="step-title">Compare bids and decide</div>
+          <p class="step-desc">GSM.ai reviews every quotation, flags cost breakdowns, identifies scope gaps, and produces a side-by-side comparison with a clear recommendation — so your team can make a fair, informed decision.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BUSINESS MODEL / PRICING -->
-  <section class="biz" id="pricing">
-    <div class="section-inner">
-      <div class="fade-in">
-        <div class="section-tag">Business Model</div>
-        <h2 class="section-title">Three ways we create value.<br />Three ways we capture it.</h2>
-        <p class="section-sub">GSM.ai is a two-sided marketplace with a transaction layer — aligned with outcomes at every step.</p>
-      </div>
-      <div class="biz-grid">
-        <div class="biz-card fade-in">
-          <div class="biz-num">For Suppliers</div>
-          <div class="biz-title">Supplier Listing</div>
-          <div class="biz-price">Subscription</div>
-          <p class="biz-desc">Suppliers join the platform and build their qualification tier. The more capability data they provide, the higher their tier — and the more buyer exposure they earn. Top Performers get priority placement in every AI recommendation.</p>
-          <ul class="biz-features">
-            <li>Tier-based visibility: Listed → Verified → Top Performer</li>
-            <li>Profile completeness score shows exactly what to add</li>
-            <li>Direct RFQ inbound leads from active buyers</li>
-            <li>Analytics on buyer interest and profile views</li>
-          </ul>
-        </div>
-        <div class="biz-card highlight fade-in">
-          <div class="biz-num">For Manufacturers</div>
-          <div class="biz-title">Sourcing Reports</div>
-          <div class="biz-price">Pay Per Use</div>
-          <p class="biz-desc">Pay per sourcing inquiry. Get a standard report free with basic vendor profiles, or upgrade to a premium report for full due diligence — financial health, US experience, capacity deep-dive.</p>
-          <ul class="biz-features">
-            <li>Standard report included per inquiry</li>
-            <li>Premium report: full due diligence package</li>
-            <li>Bidding agent included on premium</li>
-            <li>No subscription required to start</li>
-          </ul>
-        </div>
-        <div class="biz-card fade-in">
-          <div class="biz-num">Transaction Fee</div>
-          <div class="biz-title">Deal Completion</div>
-          <div class="biz-price">2% of PO</div>
-          <p class="biz-desc">When a deal closes through the GSM.ai bidding platform, the winning supplier pays 2% of the purchase order value. On a $10M equipment order, that's $200K per closed deal.</p>
-          <ul class="biz-features">
-            <li>Paid by winning supplier on deal close</li>
-            <li>Aligned with successful outcomes</li>
-            <li>No risk to the manufacturer</li>
-            <li>Auto-calculated on PO confirmation</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Enterprise add-on -->
-      <div class="fade-in" style="margin-top:32px; background: var(--gray-50); border-radius: 16px; padding: 32px; border: 1.5px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-        <div>
-          <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--blue); margin-bottom:8px;">Enterprise SaaS</div>
-          <div style="font-size:22px; font-weight:800; margin-bottom:6px;">Full Platform Integration</div>
-          <div style="font-size:14px; color:var(--gray-500); max-width:560px;">Integrate GSM.ai directly into your procurement system or company website. Full API access, custom compliance rulesets, ERP integration, and SSO. Subscription priced by headcount.</div>
-        </div>
-        <a href="#waitlist" class="btn-primary" style="white-space:nowrap;">Talk to Sales</a>
-      </div>
-      
-    </div>
-  </section>
-
-  <!-- WAITLIST -->
-  <section id="waitlist" class="waitlist">
-    <div class="section-inner">
-      <div class="fade-in">
-        <div class="section-tag">Early Access</div>
-        <h2 class="section-title">Join as a manufacturer<br />or a supplier.</h2>
-        <p class="section-sub">We're onboarding design partners in Q3 2026. Tell us which side of the marketplace you're on.</p>
-        <div class="waitlist-tabs">
-          <div class="wtab active" onclick="setTab(this,'manufacturer')">I'm a Manufacturer</div>
-          <div class="wtab" onclick="setTab(this,'supplier')">I'm a Supplier</div>
-        </div>
-        <form class="waitlist-form" onsubmit="handleSubmit(event)">
-          <input type="email" placeholder="your@company.com" required id="email-input" />
-          <button type="submit">Request Access</button>
-        </form>
-        <p class="form-note">No spam. Early access and product updates only.</p>
-      </div>
-    </div>
+  <!-- CTA -->
+  <section class="cta-section" id="access">
+    <h2>Built for supply managers.<br />Ready when you are.</h2>
+    <p>We're onboarding design partners in Q3 2026. Join the list and be first.</p>
+    <form class="cta-form" onsubmit="handleSubmit(event)">
+      <input type="email" placeholder="your@company.com" required id="email-input" />
+      <button type="submit">Request Access</button>
+    </form>
+    <p class="cta-note">No spam. Early access and product updates only.</p>
   </section>
 
   <footer>
-    <span class="logo">GSM<span style="color:#3B82F6;">.ai</span></span>
-    <p>© 2026 GSM.ai — The AI Global Supply Manager.</p>
+    <a href="#" class="logo">GSM<span style="color:#0071E3;">.ai</span></a>
+    <p>© 2026 GSM.ai. All rights reserved.</p>
   </footer>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 
     function handleSubmit(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button');
-      btn.textContent = '✓ You\'re on the list!';
-      btn.style.background = '#10B981';
+      btn.textContent = 'You\'re on the list';
+      btn.style.background = '#34C759';
+      btn.style.color = 'white';
       btn.disabled = true;
-    }
-    function setTab(el, type) {
-      document.querySelectorAll('.wtab').forEach(t => t.classList.remove('active'));
-      el.classList.add('active');
-      document.getElementById('email-input').placeholder = type === 'supplier' ? 'supplier@company.com' : 'your@company.com';
     }
   </script>
 </body>
