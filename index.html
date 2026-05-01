@@ -112,6 +112,37 @@
     .report-features li { font-size: 13px; color: var(--gray-700); padding-left: 20px; position: relative; }
     .report-features li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
 
+    /* VENDOR NETWORK */
+    .vendor-network { background: var(--gray-50); }
+    .network-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
+    .compare-col { background: white; border-radius: 16px; padding: 32px; border: 1.5px solid var(--gray-200); }
+    .compare-col.good { border-color: var(--green); background: #F0FDF4; }
+    .compare-label { font-size: 14px; font-weight: 700; margin-bottom: 20px; }
+    .compare-label.bad { color: var(--red); }
+    .compare-label.good { color: var(--green); }
+    .compare-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .compare-col ul li { font-size: 14px; color: var(--gray-700); padding-left: 20px; position: relative; }
+    .compare-col ul li::before { content: '—'; position: absolute; left: 0; color: var(--red); }
+    .compare-col.good ul li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .flywheel { display: flex; align-items: center; justify-content: center; gap: 0; margin: 56px 0; flex-wrap: wrap; }
+    .flywheel-step { text-align: center; padding: 20px 24px; flex: 1; min-width: 180px; }
+    .flywheel-icon { width: 52px; height: 52px; background: var(--blue-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; margin: 0 auto 12px; border: 2px solid #BFDBFE; }
+    .flywheel-step h4 { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .flywheel-step p { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
+    .flywheel-arrow { font-size: 20px; color: var(--blue); flex-shrink: 0; padding: 0 4px; }
+    .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .tier-card { background: white; border-radius: 16px; padding: 32px; border: 1.5px solid var(--gray-200); transition: box-shadow .2s; }
+    .tier-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); }
+    .tier-card.featured { border-color: var(--blue); background: var(--blue-pale); }
+    .tier-badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 100px; margin-bottom: 16px; }
+    .tier-badge.listed { background: var(--gray-200); color: var(--gray-700); }
+    .tier-badge.verified { background: #D1FAE5; color: #065F46; }
+    .tier-badge.top { background: var(--amber); color: white; }
+    .tier-card h4 { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
+    .tier-card p { font-size: 14px; color: var(--gray-500); line-height: 1.65; margin-bottom: 16px; }
+    .tier-req { font-size: 12px; font-weight: 600; color: var(--blue); background: var(--blue-pale); padding: 8px 12px; border-radius: 8px; line-height: 1.5; }
+    .tier-card.featured .tier-req { background: rgba(37,99,235,.12); }
+
     /* BEACHHEAD */
     .beachhead { background: var(--navy); }
     .beachhead .section-title { color: white; }
@@ -168,7 +199,9 @@
       section { padding: 70px 24px; }
       nav { padding: 0 24px; }
       .hero { padding: 120px 24px 80px; }
-      .modules-grid, .report-grid, .biz-grid { grid-template-columns: 1fr; }
+      .modules-grid, .report-grid, .biz-grid, .network-compare, .tier-grid { grid-template-columns: 1fr; }
+      .flywheel { flex-direction: column; gap: 8px; }
+      .flywheel-arrow { transform: rotate(90deg); }
       .stat-strip { gap: 40px; }
     }
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
@@ -181,6 +214,7 @@
     <div class="logo">GSM<span>.ai</span></div>
     <ul>
       <li><a href="#product">Product</a></li>
+      <li><a href="#network">Vendor Network</a></li>
       <li><a href="#beachhead">Industries</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#waitlist" class="nav-cta">Get Early Access</a></li>
@@ -295,6 +329,93 @@
     </div>
   </section>
 
+  <!-- VENDOR NETWORK -->
+  <section class="vendor-network" id="network">
+    <div class="section-inner">
+      <div class="fade-in">
+        <div class="section-tag">Qualified Vendor Network</div>
+        <h2 class="section-title">We show buyers 5 vendors.<br />Not 500.</h2>
+        <p class="section-sub">Unlike Alibaba, GSM.ai pre-qualifies every vendor before they appear in a buyer's results. The AI only recommends vendors it trusts — and trust is earned with data.</p>
+      </div>
+
+      <div class="network-compare fade-in">
+        <div class="compare-col">
+          <div class="compare-label bad">Alibaba / Traditional Platforms</div>
+          <ul>
+            <li>500+ unvetted vendors per search</li>
+            <li>Anyone can claim "world-class quality"</li>
+            <li>Buyer must do their own due diligence</li>
+            <li>No accountability for underperforming suppliers</li>
+            <li>Buyers lose weeks sorting signal from noise</li>
+          </ul>
+        </div>
+        <div class="compare-col good">
+          <div class="compare-label good">GSM.ai Qualified Vendor Network</div>
+          <ul>
+            <li>5–10 pre-qualified vendors per inquiry</li>
+            <li>AI-verified capabilities, capacity, and track record</li>
+            <li>Platform vouches for every recommended vendor</li>
+            <li>Vendors lose tier status for underperformance</li>
+            <li>Buyers make confident decisions in days, not months</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flywheel fade-in">
+        <div class="flywheel-step">
+          <div class="flywheel-icon">📋</div>
+          <h4>Vendors submit data</h4>
+          <p>Certifications, capacity, references, financial health</p>
+        </div>
+        <div class="flywheel-arrow">→</div>
+        <div class="flywheel-step">
+          <div class="flywheel-icon">🤖</div>
+          <h4>AI scores & validates</h4>
+          <p>Vendor earns a qualification tier based on evidence</p>
+        </div>
+        <div class="flywheel-arrow">→</div>
+        <div class="flywheel-step">
+          <div class="flywheel-icon">📡</div>
+          <h4>Higher tiers = more exposure</h4>
+          <p>Qualified vendors surface in AI recommendations to buyers</p>
+        </div>
+        <div class="flywheel-arrow">→</div>
+        <div class="flywheel-step">
+          <div class="flywheel-icon">💼</div>
+          <h4>Deals close → vendors invest more</h4>
+          <p>ROI drives vendors to maintain and improve their profiles</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 16px;">
+        <div style="text-align:center; margin-bottom: 40px;">
+          <h3 style="font-size: clamp(20px, 3vw, 28px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px;">Vendor Qualification Tiers</h3>
+          <p style="font-size: 16px; color: var(--gray-500);">Vendors move up by proving more. Every tier unlocks greater buyer exposure.</p>
+        </div>
+        <div class="tier-grid">
+          <div class="tier-card fade-in">
+            <span class="tier-badge listed">Listed</span>
+            <h4>Basic Profile</h4>
+            <p>Company overview and product range on record. Visible in general search but not included in AI-curated recommendations.</p>
+            <div class="tier-req">Requires: Company registration · Product catalog · Contact info</div>
+          </div>
+          <div class="tier-card fade-in">
+            <span class="tier-badge verified">Verified Supplier</span>
+            <h4>AI-Screened</h4>
+            <p>Capabilities, certifications, and production capacity validated by the AI engine. Included in sourcing report shortlists sent to buyers.</p>
+            <div class="tier-req">Requires: Certifications · Production capacity · Financial health docs · 1+ reference project</div>
+          </div>
+          <div class="tier-card featured fade-in">
+            <span class="tier-badge top">Top Performer</span>
+            <h4>Track Record Proven</h4>
+            <p>Verified Supplier with demonstrated delivery history, high buyer ratings, and fast response times. Priority placement in every recommendation.</p>
+            <div class="tier-req">Requires: Multiple buyer ratings · Delivery track record · Response score · US project experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- REPORT TIERS -->
   <section class="reports" id="reports">
     <div class="section-inner">
@@ -396,12 +517,12 @@
           <div class="biz-num">For Suppliers</div>
           <div class="biz-title">Supplier Listing</div>
           <div class="biz-price">Subscription</div>
-          <p class="biz-desc">Suppliers join the platform to get direct exposure to qualified manufacturers actively sourcing equipment. Pay to be discoverable — no deal, no commission.</p>
+          <p class="biz-desc">Suppliers join the platform and build their qualification tier. The more capability data they provide, the higher their tier — and the more buyer exposure they earn. Top Performers get priority placement in every AI recommendation.</p>
           <ul class="biz-features">
-            <li>Listed in AI sourcing results</li>
-            <li>Verified capability profile</li>
-            <li>Direct RFQ inbound leads</li>
-            <li>Analytics on buyer interest</li>
+            <li>Tier-based visibility: Listed → Verified → Top Performer</li>
+            <li>Profile completeness score shows exactly what to add</li>
+            <li>Direct RFQ inbound leads from active buyers</li>
+            <li>Analytics on buyer interest and profile views</li>
           </ul>
         </div>
         <div class="biz-card highlight fade-in">
