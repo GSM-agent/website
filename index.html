@@ -81,6 +81,39 @@
     }
     .hero-cta:hover { opacity: 0.85; }
 
+    /* HERO BACKGROUND VIDEO */
+    /* Place hero-bg.mp4 in this folder. hero-bg.jpg is the static fallback. */
+    .hero-wrap {
+      position: relative;
+      overflow: hidden;
+      background-color: #0A0A0A;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.42) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-wrap .hero { position: relative; z-index: 2; }
+    .hero-wrap h1 { color: var(--white); }
+    .hero-wrap .hero-label { color: rgba(255,255,255,0.55); }
+    .hero-wrap .hero-sub { color: rgba(255,255,255,0.72); }
+    .hero-tagline { font-size: 20px; color: rgba(255,255,255,0.38); margin-top: 20px; line-height: 1.6; }
+
     /* DIVIDER */
     .divider { border: none; border-top: 1px solid rgba(0,0,0,0.08); margin: 0 48px; }
 
@@ -229,9 +262,23 @@
       footer { flex-direction: column; text-align: center; }
     }
 
+    /* STATS STRIP */
+    .stats-strip { padding: 72px 48px; background: var(--white); }
+    .stats-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; }
+    .stat { text-align: center; }
+    .stat-val { font-size: 44px; font-weight: 800; letter-spacing: -2px; color: var(--black); margin-bottom: 10px; }
+    .stat-txt { font-size: 14px; color: var(--gray-600); line-height: 1.55; max-width: 190px; margin: 0 auto; }
+    .stat-sep { width: 1px; height: 56px; background: rgba(0,0,0,0.1); margin: 0 32px; }
+
     /* FADE IN */
     .fade { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
     .fade.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .stats-strip { padding: 56px 24px; }
+      .stats-inner { grid-template-columns: 1fr; gap: 40px; }
+      .stat-sep { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -242,13 +289,39 @@
   </nav>
 
   <!-- HERO -->
+  <div class="hero-wrap">
+  <video class="hero-bg-video" autoplay muted loop playsinline>
+    <source src="13814887_3840_2160_100fps.mp4" type="video/mp4">
+  </video>
   <div class="hero">
-    <div class="hero-label">For Global Supply Managers</div>
+    <div class="hero-label">For CAPEX Procurement</div>
     <h1>Source. Bid. Win.</h1>
     <p class="hero-sub">
-      GSM.ai handles the market research, scope alignment, and risk assessment — so your team spends less time searching and more time deciding.
+      Weeks of vendor research. Bids you can't compare. GSM.ai fixes both — in days.
     </p>
     <a href="#access" class="hero-cta">Get Early Access</a>
+    <p class="hero-tagline">We help you to build smart factories.</p>
+  </div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat fade">
+        <div class="stat-val">$120T</div>
+        <div class="stat-txt">global procurement spend — most still managed by spreadsheet and email</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat fade">
+        <div class="stat-val">3–5 wks</div>
+        <div class="stat-txt">lost per RFQ cycle to vendor research and scope misalignment</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat fade">
+        <div class="stat-val">Days</div>
+        <div class="stat-txt">how long the same cycle takes with GSM.ai — brief to final recommendation</div>
+      </div>
+    </div>
   </div>
 
   <hr class="divider" />
@@ -259,7 +332,7 @@
       <div class="fade">
         <div class="section-label">What it does</div>
         <h2>Two jobs. Done right.</h2>
-        <p class="section-sub">GSM.ai works across the two most time-consuming parts of a global supply manager's role.</p>
+        <p class="section-sub">SAP handles purchase orders. Ariba handles contracts. Nobody automates the sourcing intelligence and bid alignment that comes before — until now.</p>
       </div>
       <div class="cap-grid fade">
         <div class="cap-card">
@@ -323,8 +396,8 @@
 
   <!-- CTA -->
   <section class="cta-section" id="access">
-    <h2>Built for global supply managers.<br />Ready when you are.</h2>
-    <p>We're onboarding design partners in Q3 2026. Join the list and be first.</p>
+    <h2>Built for the procurement workflow<br />AI hasn't touched yet.</h2>
+    <p>We're onboarding a select cohort of design partners in Q3 2026. Spots are limited — join the list and we'll reach out directly.</p>
     <form class="cta-form" onsubmit="handleSubmit(event)">
       <input type="email" placeholder="your@company.com" required id="email-input" />
       <button type="submit">Request Access</button>
@@ -343,13 +416,33 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 
-    function handleSubmit(e) {
+    // Replace FORMSPREE_FORM_ID with your ID from formspree.io/new
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xlgznpkg';
+
+    async function handleSubmit(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button');
-      btn.textContent = 'You\'re on the list';
-      btn.style.background = '#34C759';
-      btn.style.color = 'white';
+      const email = document.getElementById('email-input').value;
+      btn.textContent = 'Sending…';
       btn.disabled = true;
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        if (res.ok) {
+          btn.textContent = "You're on the list";
+          btn.style.background = '#34C759';
+          btn.style.color = 'white';
+        } else {
+          btn.textContent = 'Try again';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
     }
   </script>
 </body>
